@@ -6,19 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.douxpang.com">
-  <title>Archives: 2019 | devonpang的博客</title>
+  <title>devonpang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="17级双非，非科班，好小说诗文，好争论交友，技术很菜，人又笨，只能日夜学习才能与君同行，主前端，目标全栈">
+  <meta name="description" content="菜鸟扫盲之调试代理工具——whistle​    代理调试工具一直有不少，像我之前也用过Charles那个小花瓶，从界面上来说也是不错的，但因为自己原因也没有太用明白。 ​    这次推荐一下whistle。 ​    因为是菜鸟扫盲系列，首先清楚一下，调试代理工具是用来干嘛的呢？ ​    在很多场景下，我们无法直接访问到一个地址，或者想在某个地址访问本地代码等等，这就需要有工具把一个网址代理你">
 <meta name="keywords" content="js,css,html,vue,react,nodejs,算法,生活">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="devonpang的博客">
-<meta property="og:url" content="https://www.douxpang.com/archives/2019/index.html">
+<meta property="og:url" content="https://www.douxpang.com/2020/02/14/菜鸟扫盲之调试代理工具——whistle/index.html">
 <meta property="og:site_name" content="devonpang的博客">
-<meta property="og:description" content="17级双非，非科班，好小说诗文，好争论交友，技术很菜，人又笨，只能日夜学习才能与君同行，主前端，目标全栈">
+<meta property="og:description" content="菜鸟扫盲之调试代理工具——whistle​    代理调试工具一直有不少，像我之前也用过Charles那个小花瓶，从界面上来说也是不错的，但因为自己原因也没有太用明白。 ​    这次推荐一下whistle。 ​    因为是菜鸟扫盲系列，首先清楚一下，调试代理工具是用来干嘛的呢？ ​    在很多场景下，我们无法直接访问到一个地址，或者想在某个地址访问本地代码等等，这就需要有工具把一个网址代理你">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://segmentfault.com/img/bVbfxMK">
+<meta property="og:image" content="https://segmentfault.com/img/bVbfxN4">
+<meta property="og:updated_time" content="2019-10-17T09:22:25.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="devonpang的博客">
-<meta name="twitter:description" content="17级双非，非科班，好小说诗文，好争论交友，技术很菜，人又笨，只能日夜学习才能与君同行，主前端，目标全栈">
+<meta name="twitter:description" content="菜鸟扫盲之调试代理工具——whistle​    代理调试工具一直有不少，像我之前也用过Charles那个小花瓶，从界面上来说也是不错的，但因为自己原因也没有太用明白。 ​    这次推荐一下whistle。 ​    因为是菜鸟扫盲系列，首先清楚一下，调试代理工具是用来干嘛的呢？ ​    在很多场景下，我们无法直接访问到一个地址，或者想在某个地址访问本地代码等等，这就需要有工具把一个网址代理你">
+<meta name="twitter:image" content="https://segmentfault.com/img/bVbfxMK">
   
     <link rel="alternative" href="/atom.xml" title="devonpang的博客" type="application/atom+xml">
   
@@ -158,49 +162,177 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-菜鸟扫盲之调试代理工具——whistle" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="菜鸟扫盲之调试代理工具——whistle"><a href="#菜鸟扫盲之调试代理工具——whistle" class="headerlink" title="菜鸟扫盲之调试代理工具——whistle"></a>菜鸟扫盲之调试代理工具——whistle</h2><p>​    代理调试工具一直有不少，像我之前也用过Charles那个小花瓶，从界面上来说也是不错的，但因为自己原因也没有太用明白。</p>
+<p>​    这次推荐一下whistle。</p>
+<p>​    因为是菜鸟扫盲系列，首先清楚一下，调试代理工具是用来干嘛的呢？</p>
+<p>​    在很多场景下，我们无法直接访问到一个地址，或者想在某个地址访问本地代码等等，这就需要有工具把一个网址代理你想要的地方。</p>
+<p>​    whistle就可以做的很好。</p>
+<p>​    whistle的安装与开启如下</p>
+<h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install  -g  whistle   //也可以使用tnpm</span><br><span class="line"></span><br><span class="line">w2 -h  //帮助信息</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-启动"><a href="#2-启动" class="headerlink" title="2. 启动"></a>2. 启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w2 start  -p 8899  //不设置端口默认使用8899</span><br></pre></td></tr></table></figure>
+
+<p>更多的详细可以访问whistle在github上的文档</p>
+<p><a href="https://github.com/avwo/whistle/blob/master/README-zh_CN.md" target="_blank" rel="noopener">https://github.com/avwo/whistle/blob/master/README-zh_CN.md</a></p>
+<p>在开启了8899端口后，想一下，如果要用浏览器支持这个代理，这时还需要另一个工具</p>
+<p><a href="https://github.com/FelisCatus/SwitchyOmega" target="_blank" rel="noopener">SwitchyOmega</a></p>
+<p>他就是可以在浏览器上开启我们的代理</p>
+<p>另外 你已经可以在127.0.0.1:8899上开启whistle的页面</p>
+<p>此时，在你访问不同的页面时，它已经可以进行抓包了！</p>
+<p><img src="https://segmentfault.com/img/bVbfxMK" alt="clipboard.png"></p>
+<p>还有另外一个要做的事情，就是我们的网址代理</p>
+<p><img src="https://segmentfault.com/img/bVbfxN4" alt="clipboard.png"></p>
+<p>在这里创建你的代理</p>
+<p>你的指令既可以用正则表达式也可以直接写</p>
+<p>比如：</p>
+<ol>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.qq.com  http://www.baidu.com</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>在保存这样的代理指令后  你想访问qq的时候就会跳到百度页面</p>
+<p>很神奇吧</p>
+<p>​    2.</p>
+<p>​        10.241.11.111  <a href="http://www.qq.com" target="_blank" rel="noopener">www.qq.com</a></p>
+<p>​        或者通过本地端口访问</p>
+<p>​    3.</p>
+<p>​        <a href="http://www.qq.com/pgg_act/" target="_blank" rel="noopener">http://www.qq.com/pgg_act/</a>  D:\dev\  </p>
+<p>或者这样都是可以的   </p>
+<p>快去试试吧！</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/17/hello-world/" class="archive-article-date">
-  	<time datetime="2019-09-17T11:01:02.574Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/17/hello-world/">Hello World</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.douxpang.com/2020/02/14/菜鸟扫盲之调试代理工具——whistle/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/09/17/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -223,8 +355,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
