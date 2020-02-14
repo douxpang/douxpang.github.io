@@ -160,6 +160,60 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-分情况获取url" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>获取url里的参数是比较常用的操作，这里给增加一些难度，分情况</p>
+<ol>
+<li>如果指定参数名称，返回该参数的值 或者 空字符串</li>
+<li>不指定参数名称，返回全部的参数对象 或者 {}</li>
+<li>如果存在多个同名参数，则返回数组
+        
+          <a class="article-more-a" href="/2020/02/14/分情况获取url/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/14/分情况获取url/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-菜鸟扫盲之调试代理工具——whistle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -167,42 +221,9 @@
       
         <h2 id="菜鸟扫盲之调试代理工具——whistle"><a href="#菜鸟扫盲之调试代理工具——whistle" class="headerlink" title="菜鸟扫盲之调试代理工具——whistle"></a>菜鸟扫盲之调试代理工具——whistle</h2><p>​    代理调试工具一直有不少，像我之前也用过Charles那个小花瓶，从界面上来说也是不错的，但因为自己原因也没有太用明白。</p>
 <p>​    这次推荐一下whistle。</p>
-<p>​    因为是菜鸟扫盲系列，首先清楚一下，调试代理工具是用来干嘛的呢？</p>
-<p>​    在很多场景下，我们无法直接访问到一个地址，或者想在某个地址访问本地代码等等，这就需要有工具把一个网址代理你想要的地方。</p>
-<p>​    whistle就可以做的很好。</p>
-<p>​    whistle的安装与开启如下</p>
-<h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install  -g  whistle   //也可以使用tnpm</span><br><span class="line"></span><br><span class="line">w2 -h  //帮助信息</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-启动"><a href="#2-启动" class="headerlink" title="2. 启动"></a>2. 启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w2 start  -p 8899  //不设置端口默认使用8899</span><br></pre></td></tr></table></figure>
-
-<p>更多的详细可以访问whistle在github上的文档</p>
-<p><a href="https://github.com/avwo/whistle/blob/master/README-zh_CN.md" target="_blank" rel="noopener">https://github.com/avwo/whistle/blob/master/README-zh_CN.md</a></p>
-<p>在开启了8899端口后，想一下，如果要用浏览器支持这个代理，这时还需要另一个工具</p>
-<p><a href="https://github.com/FelisCatus/SwitchyOmega" target="_blank" rel="noopener">SwitchyOmega</a></p>
-<p>他就是可以在浏览器上开启我们的代理</p>
-<p>另外 你已经可以在127.0.0.1:8899上开启whistle的页面</p>
-<p>此时，在你访问不同的页面时，它已经可以进行抓包了！</p>
-<p><img src="https://segmentfault.com/img/bVbfxMK" alt="clipboard.png"></p>
-<p>还有另外一个要做的事情，就是我们的网址代理</p>
-<p><img src="https://segmentfault.com/img/bVbfxN4" alt="clipboard.png"></p>
-<p>在这里创建你的代理</p>
-<p>你的指令既可以用正则表达式也可以直接写</p>
-<p>比如：</p>
-<ol>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.qq.com  http://www.baidu.com</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>在保存这样的代理指令后  你想访问qq的时候就会跳到百度页面</p>
-<p>很神奇吧</p>
-<p>​    2.</p>
-<p>​        10.241.11.111  <a href="http://www.qq.com" target="_blank" rel="noopener">www.qq.com</a></p>
-<p>​        或者通过本地端口访问</p>
-<p>​    3.</p>
-<p>​        <a href="http://www.qq.com/pgg_act/" target="_blank" rel="noopener">http://www.qq.com/pgg_act/</a>  D:\dev\  </p>
-<p>或者这样都是可以的   </p>
-<p>快去试试吧！</p>
-
+        
+          <a class="article-more-a" href="/2020/02/14/菜鸟扫盲之调试代理工具——whistle/#more">more >></a>
+        
       
 
       
