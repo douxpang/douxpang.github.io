@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://www.douxpang.com">
   <title>devonpang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="js的dom方法  contains 今天来接触一个js方法，contains 这个方法之前用过的比较少，但在某些时候却很有用 它的作用就是判断dom的包含关系 假设有这样的需求 查找两个节点的最近的一个共同父节点，可以包括节点自身 是不是感觉一下无可下手？ 1234567function commonParentNode(oNode1, oNode2) &amp;#123;    if(oNode1.c">
+  <meta name="description" content="js的dom方法  contains今天来接触一个js方法，contains 这个方法之前用过的比较少，但在某些时候却很有用 它的作用就是判断dom的包含关系 假设有这样的需求">
 <meta name="keywords" content="js,css,html,vue,react,nodejs,算法,生活">
 <meta property="og:type" content="article">
 <meta property="og:title" content="devonpang的博客">
 <meta property="og:url" content="https://www.douxpang.com/2020/03/01/contains/index.html">
 <meta property="og:site_name" content="devonpang的博客">
-<meta property="og:description" content="js的dom方法  contains 今天来接触一个js方法，contains 这个方法之前用过的比较少，但在某些时候却很有用 它的作用就是判断dom的包含关系 假设有这样的需求 查找两个节点的最近的一个共同父节点，可以包括节点自身 是不是感觉一下无可下手？ 1234567function commonParentNode(oNode1, oNode2) &amp;#123;    if(oNode1.c">
+<meta property="og:description" content="js的dom方法  contains今天来接触一个js方法，contains 这个方法之前用过的比较少，但在某些时候却很有用 它的作用就是判断dom的包含关系 假设有这样的需求">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-01T09:28:12.001Z">
+<meta property="og:updated_time" content="2020-03-01T11:02:58.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="devonpang的博客">
-<meta name="twitter:description" content="js的dom方法  contains 今天来接触一个js方法，contains 这个方法之前用过的比较少，但在某些时候却很有用 它的作用就是判断dom的包含关系 假设有这样的需求 查找两个节点的最近的一个共同父节点，可以包括节点自身 是不是感觉一下无可下手？ 1234567function commonParentNode(oNode1, oNode2) &amp;#123;    if(oNode1.c">
+<meta name="twitter:description" content="js的dom方法  contains今天来接触一个js方法，contains 这个方法之前用过的比较少，但在某些时候却很有用 它的作用就是判断dom的包含关系 假设有这样的需求">
   
     <link rel="alternative" href="/atom.xml" title="devonpang的博客" type="application/atom+xml">
   
@@ -164,11 +164,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>js的dom方法  contains</p>
-<p>今天来接触一个js方法，contains</p>
+        <h2 id="js的dom方法-contains"><a href="#js的dom方法-contains" class="headerlink" title="js的dom方法  contains"></a>js的dom方法  contains</h2><p>今天来接触一个js方法，contains</p>
 <p>这个方法之前用过的比较少，但在某些时候却很有用</p>
 <p>它的作用就是判断dom的包含关系</p>
 <p>假设有这样的需求</p>
+<a id="more"></a>
+
+
 <p><strong>查找两个节点的最近的一个共同父节点，可以包括节点自身</strong></p>
 <p>是不是感觉一下无可下手？</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function commonParentNode(oNode1, oNode2) &#123;</span><br><span class="line">    if(oNode1.contains(oNode2))&#123;</span><br><span class="line">        return oNode1;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return commonParentNode(oNode1.parentNode,oNode2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

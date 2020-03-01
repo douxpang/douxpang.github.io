@@ -165,293 +165,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>正则匹配的一些回顾和练习</p>
-<h4 id="实例化RegExp的两种方法"><a href="#实例化RegExp的两种方法" class="headerlink" title="实例化RegExp的两种方法"></a>实例化RegExp的两种方法</h4><ol>
+        <h2 id="正则匹配的一些回顾和练习"><a href="#正则匹配的一些回顾和练习" class="headerlink" title="正则匹配的一些回顾和练习"></a>正则匹配的一些回顾和练习</h2><h4 id="实例化RegExp的两种方法"><a href="#实例化RegExp的两种方法" class="headerlink" title="实例化RegExp的两种方法"></a>实例化RegExp的两种方法</h4><ol>
 <li>字面量</li>
 <li>构造函数</li>
 </ol>
-<h4 id="三种修饰符"><a href="#三种修饰符" class="headerlink" title="三种修饰符"></a>三种修饰符</h4><ul>
-<li>g:global全文搜索</li>
-<li>i:ignore case忽略大小写</li>
-<li>m:mutiple lines多行搜索</li>
-</ul>
-<h4 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h4><table>
-<thead>
-<tr>
-<th align="left">字符</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">\</td>
-<td align="left">将下一个字符标记为一个特殊字符、或一个原义字符、或一个 后向引用、或一个八进制转义符。例如，’n’ 匹配字符 “n”。’\n’ 匹配一个换行符。序列 ‘&#39; 匹配 “” 而 “(“ 则匹配 “(“。</td>
-</tr>
-<tr>
-<td align="left">^</td>
-<td align="left">匹配输入字符串的开始位置。如果设置了 RegExp 对象的 Multiline 属性，^ 也匹配 ‘\n’ 或 ‘\r’ 之后的位置。</td>
-</tr>
-<tr>
-<td align="left">$</td>
-<td align="left">匹配输入字符串的结束位置。如果设置了RegExp 对象的 Multiline 属性，$ 也匹配 ‘\n’ 或 ‘\r’ 之前的位置。</td>
-</tr>
-<tr>
-<td align="left">*</td>
-<td align="left">匹配前面的子表达式零次或多次。例如，zo* 能匹配 “z” 以及 “zoo”。* 等价于{0,}。</td>
-</tr>
-<tr>
-<td align="left">+</td>
-<td align="left">匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。</td>
-</tr>
-<tr>
-<td align="left">?</td>
-<td align="left">匹配前面的子表达式零次或一次。例如，”do(es)?” 可以匹配 “do” 或 “does” 中的”do” 。? 等价于 {0,1}。</td>
-</tr>
-<tr>
-<td align="left">{n}</td>
-<td align="left">n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。</td>
-</tr>
-<tr>
-<td align="left">{n,}</td>
-<td align="left">n 是一个非负整数。至少匹配n 次。例如，’o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foooood” 中的所有 o。’o{1,}’ 等价于 ‘o+’。’o{0,}’ 则等价于 ‘o*’。</td>
-</tr>
-<tr>
-<td align="left">{n,m}</td>
-<td align="left">m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如， “o{1,3}” 将匹配 “fooooood” 中的前三个 o。’o{0,1}’ 等价于 ‘o?’。请注意在逗号和两个数之间不能有空格。</td>
-</tr>
-<tr>
-<td align="left">?</td>
-<td align="left">当该字符紧跟在任何一个其他限制符 (*, +, ?, {n}, {n,}, {n,m}) 后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串 “oooo”，’o+?’ 将匹配单个 “o”，而 ‘o+’ 将匹配所有 ‘o’。</td>
-</tr>
-<tr>
-<td align="left">.</td>
-<td align="left">匹配除 “\n” 之外的任何单个字符。要匹配包括 ‘\n’ 在内的任何字符，请使用象 ‘[.\n]’ 的模式。</td>
-</tr>
-<tr>
-<td align="left">(pattern)</td>
-<td align="left">匹配 pattern 并获取这一匹配。所获取的匹配可以从产生的 Matches 集合得到，在VBScript 中使用 SubMatches 集合，在Visual Basic Scripting Edition 中则使用 9 属性。要匹配圆括号字符，请使用 ‘(‘ 或 ‘)’。</td>
-</tr>
-<tr>
-<td align="left">(?:pattern)</td>
-<td align="left">匹配 pattern 但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用 “或” 字符 (|) 来组合一个模式的各个部分是很有用。例如， ‘industr(?:y|ies) 就是一个比 ‘industry|industries’ 更简略的表达式。</td>
-</tr>
-<tr>
-<td align="left">(?=pattern)</td>
-<td align="left">正向预查，在任何匹配 pattern 的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如， ‘Windows (?=95|98|NT|2000)’ 能匹配 “Windows 2000” 中的 “Windows” ，但不能匹配 “Windows 3.1” 中的 “Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
-</tr>
-<tr>
-<td align="left">(?!pattern)</td>
-<td align="left">负向预查，在任何不匹配的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如’Windows (?!95|98|NT|2000)’ 能匹配 “Windows 3.1” 中的 “Windows”，但不能匹配 “Windows 2000” 中的 “Windows”。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始</td>
-</tr>
-<tr>
-<td align="left">x|y</td>
-<td align="left">匹配 x 或 y。例如，’z|food’ 能匹配 “z” 或 “food”。’(z|f)ood’ 则匹配 “zood” 或 “food”。</td>
-</tr>
-<tr>
-<td align="left">[xyz]</td>
-<td align="left">字符集合。匹配所包含的任意一个字符。例如， ‘[abc]’ 可以匹配 “plain” 中的 ‘a’。</td>
-</tr>
-<tr>
-<td align="left">[^xyz]</td>
-<td align="left">负值字符集合。匹配未包含的任意字符。例如，’[^abc]’ 可以匹配 “plain” 中的’p’。</td>
-</tr>
-<tr>
-<td align="left">[a-z]</td>
-<td align="left">字符范围。匹配指定范围内的任意字符。例如，’[a-z]’ 可以匹配 ‘a’ 到 ‘z’ 范围内的任意小写字母字符。</td>
-</tr>
-<tr>
-<td align="left">[^a-z]</td>
-<td align="left">负值字符范围。匹配任何不在指定范围内的任意字符。例如，’[^a-z]’ 可以匹配任何不在 ‘a’ 到 ‘z’ 范围内的任意字符。</td>
-</tr>
-<tr>
-<td align="left">\b</td>
-<td align="left">匹配一个单词边界，也就是指单词和空格间的位置。例如， ‘er\b’ 可以匹配”never” 中的 ‘er’，但不能匹配 “verb” 中的 ‘er’。</td>
-</tr>
-<tr>
-<td align="left">\B</td>
-<td align="left">匹配非单词边界。’er\B’ 能匹配 “verb” 中的 ‘er’，但不能匹配 “never” 中的 ‘er’。</td>
-</tr>
-<tr>
-<td align="left">\cx</td>
-<td align="left">匹配由x指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。</td>
-</tr>
-<tr>
-<td align="left">\d</td>
-<td align="left">匹配一个数字字符。等价于 [0-9]。</td>
-</tr>
-<tr>
-<td align="left">\D</td>
-<td align="left">匹配一个非数字字符。等价于 [^0-9]。</td>
-</tr>
-<tr>
-<td align="left">\f</td>
-<td align="left">匹配一个换页符。等价于 \x0c 和 \cL。</td>
-</tr>
-<tr>
-<td align="left">\n</td>
-<td align="left">匹配一个换行符。等价于 \x0a 和 \cJ。</td>
-</tr>
-<tr>
-<td align="left">\r</td>
-<td align="left">匹配一个回车符。等价于 \x0d 和 \cM。</td>
-</tr>
-<tr>
-<td align="left">\s</td>
-<td align="left">匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。</td>
-</tr>
-<tr>
-<td align="left">\S</td>
-<td align="left">匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
-</tr>
-<tr>
-<td align="left">\t</td>
-<td align="left">匹配一个制表符。等价于 \x09 和 \cI。</td>
-</tr>
-<tr>
-<td align="left">\v</td>
-<td align="left">匹配一个垂直制表符。等价于 \x0b 和 \cK。</td>
-</tr>
-<tr>
-<td align="left">\w</td>
-<td align="left">匹配包括下划线的任何单词字符。等价于’[A-Za-z0-9_]’。</td>
-</tr>
-<tr>
-<td align="left">\W</td>
-<td align="left">匹配任何非单词字符。等价于 ‘[^A-Za-z0-9_]’。</td>
-</tr>
-<tr>
-<td align="left">\xn</td>
-<td align="left">匹配 n，其中 n 为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如， ‘\x41’ 匹配 “A”。’\x041’ 则等价于 ‘\x04’ &amp; “1”。正则表达式中可以使用 ASCII 编码。.</td>
-</tr>
-<tr>
-<td align="left">\num</td>
-<td align="left">匹配 num，其中 num 是一个正整数。对所获取的匹配的引用。例如，’(.)\1’ 匹配两个连续的相同字符。</td>
-</tr>
-<tr>
-<td align="left">\n</td>
-<td align="left">标识一个八进制转义值或一个后向引用。如果 \n 之前至少 n 个获取的子表达式，则 n 为后向引用。否则，如果 n 为八进制数字 (0-7)，则 n 为一个八进制转义值。</td>
-</tr>
-<tr>
-<td align="left">\nm</td>
-<td align="left">标识一个八进制转义值或一个后向引用。如果 \nm 之前至少有 nm 个获取的子表达式，则 nm 为后向引用。如果 \nm 之前至少有 n 个获取，则 n 为一个后跟文字 m 的后向引用。如果前面的条件都不满足，若  n 和 m 均为八进制数字 (0-7)，则 \nm 将匹配八进制转义值 nm。</td>
-</tr>
-<tr>
-<td align="left">\nml</td>
-<td align="left">如果 n 为八进制数字 (0-3)，且 m 和 l 均为八进制数字 (0-7)，则匹配八进制转义值 nml。</td>
-</tr>
-<tr>
-<td align="left">\un</td>
-<td align="left">匹配 n，其中 n 是一个用四个十六进制数字表示的 Unicode 字符。例如， \u00A9 匹配版权符号 (?)。</td>
-</tr>
-</tbody></table>
-<h4 id="可以用元字符-来构造类"><a href="#可以用元字符-来构造类" class="headerlink" title="可以用元字符[]来构造类"></a>可以用元字符[]来构造类</h4><p>所谓类是指符合某些特征的对象，一个泛指而不是特指某个字符。如[abc]匹配包含任意a或b或c的字符串</p>
-<h4 id="字符类取反"><a href="#字符类取反" class="headerlink" title="字符类取反"></a>字符类取反</h4><p>使用元字符^创建反向类，即不属于某类的内容 如[^ abc]匹配不是字符a或b或c的内容</p>
-<h4 id="范围类"><a href="#范围类" class="headerlink" title="范围类"></a>范围类</h4><p>可以使用[a-z]来表示a到z之间的任意字符，这是一个闭区间 类内部可以连写，如[a-zA-Z]</p>
-<p>[a-z-]匹配a到z之间的字母和-</p>
-<h4 id="预定义类"><a href="#预定义类" class="headerlink" title="预定义类"></a>预定义类</h4><table>
-<thead>
-<tr>
-<th align="left">字符</th>
-<th align="left">等价类</th>
-<th align="left">含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">.（点）</td>
-<td align="left">[^\r\n]</td>
-<td align="left">除了回车符和换行符之外的所有字符</td>
-</tr>
-<tr>
-<td align="left">\d</td>
-<td align="left">[0-9]</td>
-<td align="left">数字字符</td>
-</tr>
-<tr>
-<td align="left">\D</td>
-<td align="left">[^0-9]</td>
-<td align="left">非数字字符</td>
-</tr>
-<tr>
-<td align="left">\s</td>
-<td align="left">[\t\n\x0B\f\r]</td>
-<td align="left">空白符</td>
-</tr>
-<tr>
-<td align="left">\S</td>
-<td align="left">[^\t\n\x\0B\f\t]</td>
-<td align="left">非空白符</td>
-</tr>
-<tr>
-<td align="left">\w</td>
-<td align="left">[a-zA-Zz_0-9]</td>
-<td align="left">单词字符（字母、数字下划线）</td>
-</tr>
-<tr>
-<td align="left">\W</td>
-<td align="left">[^a-zA-Zz_0-9]</td>
-<td align="left">非单词字符</td>
-</tr>
-</tbody></table>
-<h4 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h4><table>
-<thead>
-<tr>
-<th align="left">字符</th>
-<th align="left">含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">^</td>
-<td align="left">以xxx开始（加在前面,^xxx）</td>
-</tr>
-<tr>
-<td align="left">$</td>
-<td align="left">以xxx结束（加在后面,xxx$）</td>
-</tr>
-<tr>
-<td align="left">\b</td>
-<td align="left">单词边界</td>
-</tr>
-<tr>
-<td align="left">\B</td>
-<td align="left">非单词边界</td>
-</tr>
-</tbody></table>
-<h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><table>
-<thead>
-<tr>
-<th align="left">字符</th>
-<th align="left">含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">?</td>
-<td align="left">出现零次或一次（最多出现一次）</td>
-</tr>
-<tr>
-<td align="left">+</td>
-<td align="left">出现一次或多次（至少出现一次）</td>
-</tr>
-<tr>
-<td align="left">*</td>
-<td align="left">出现零次或多次（任意次）</td>
-</tr>
-<tr>
-<td align="left">{n}</td>
-<td align="left">出现n次</td>
-</tr>
-<tr>
-<td align="left">{n,m}</td>
-<td align="left">出现n到m次</td>
-</tr>
-<tr>
-<td align="left">{n,}</td>
-<td align="left">至少出现n次</td>
-</tr>
-</tbody></table>
-<p>再附上一些遇见过的实践</p>
-<p>邮箱匹配</p>
-<p>let reg = /^(\w)+(.\w+)*@(\w)+((.\w+)+)$/</p>
-<p>let reg = /(\w)\1/  这个可以判断有没有重复的字母 利用分组</p>
-
+        
+          <a class="article-more-a" href="/2020/03/01/正则匹配的一些回顾和练习/#more">more >></a>
+        
       
 
       
@@ -498,10 +218,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近觉得对时间对象的掌握有些稀疏，这里再复习一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">function formatDate(oDate, sFormation) &#123;</span><br><span class="line">    var add0 = function(num)&#123;</span><br><span class="line">        if(num&lt;10)</span><br><span class="line">            return 0+&quot;&quot;+num;</span><br><span class="line">        else</span><br><span class="line">            return num;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    var o = &#123;</span><br><span class="line">        &quot;yyyy&quot;:oDate.getFullYear(),</span><br><span class="line">        &quot;yy&quot;:oDate.getFullYear()%100,</span><br><span class="line">        &quot;MM&quot;:add0(oDate.getMonth()+1),</span><br><span class="line">        &quot;M&quot;:oDate.getMonth()+1,</span><br><span class="line">        &quot;dd&quot;:add0(oDate.getDate()),</span><br><span class="line">        &quot;d&quot;:oDate.getDate(),</span><br><span class="line">        &quot;HH&quot;:add0(oDate.getHours()),</span><br><span class="line">        &quot;H&quot;:oDate.getHours(),</span><br><span class="line">        &quot;hh&quot;:add0(oDate.getHours()%12),</span><br><span class="line">        &quot;h&quot;:oDate.getHours()%12,</span><br><span class="line">        &quot;mm&quot;:add0(oDate.getMinutes()),</span><br><span class="line">        &quot;m&quot;:oDate.getMinutes(),</span><br><span class="line">        &quot;ss&quot;:add0(oDate.getSeconds()),</span><br><span class="line">        &quot;s&quot;:oDate.getSeconds(),</span><br><span class="line">        &quot;w&quot;:function()&#123;</span><br><span class="line">            var day = [&quot;日&quot;,&quot;一&quot;,&quot;二&quot;,&quot;三&quot;,&quot;四&quot;,&quot;五&quot;,&quot;六&quot;];</span><br><span class="line">            return day[oDate.getDay()];</span><br><span class="line">        &#125;(),</span><br><span class="line">    &#125;</span><br><span class="line">    for(var k in o)&#123;</span><br><span class="line">        sFormation = sFormation.replace(k,o[k]);</span><br><span class="line">    &#125;</span><br><span class="line">    return sFormation;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+        <h2 id="最近觉得对时间对象的掌握有些稀疏，这里再复习一下"><a href="#最近觉得对时间对象的掌握有些稀疏，这里再复习一下" class="headerlink" title="最近觉得对时间对象的掌握有些稀疏，这里再复习一下"></a>最近觉得对时间对象的掌握有些稀疏，这里再复习一下</h2>
+        
+          <a class="article-more-a" href="/2020/03/01/时间的格式化/#more">more >></a>
+        
       
 
       
@@ -552,51 +272,9 @@
 <p>而为什么需要这么一个垃圾回收机制呢</p>
 <p>在我们工作中，总会产生一些这样的‘垃圾’即</p>
 <p><strong>程序不用的内存空间（可能是在之前用过了，以后不会再用的)</strong></p>
-<p>而我们的GC它的作用就是</p>
-<ul>
-<li>找到内存空间中的垃圾。</li>
-<li>回收垃圾，让程序员能再次利用这部分空间。</li>
-</ul>
-<p>简单说两种垃圾回收的算法</p>
-<p>1.引用计数法</p>
-<p>顾名思义，让所有对象实现记录下有多少“程序”在引用自己，让各对象都知道自己的“人气指数”。举一个简单的例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = new Object(); // 此时&apos;这个对象&apos;的引用计数为1（a在引用）</span><br><span class="line">var b = a; // ‘这个对象’的引用计数是2（a,b）</span><br><span class="line">a = null; // reference_count = 1</span><br><span class="line">b = null; // reference_count = 0 </span><br><span class="line">// 下一步 GC来回收‘这个对象’了</span><br></pre></td></tr></table></figure>
-
-<p><strong>优势</strong></p>
-<ol>
-<li><strong>可即刻回收垃圾</strong>，当被引用数值为0时，对象马上会把自己作为空闲空间连到空闲链表上，也就是说。在变成垃圾的时候就立刻被回收。</li>
-<li><strong>因为是即时回收,那么‘程序’不会暂停去单独使用很长一段时间的GC，那么最大暂停时间很短。</strong></li>
-<li><strong>不用去遍历堆里面的所有活动对象和非活动对象</strong></li>
-</ol>
-<p><strong>劣势</strong></p>
-<ol>
-<li><strong>计数器需要占很大的位置</strong>，因为不能预估被引用的上限，打个比方，可能出现32位即2的32次方个对象同时引用一个对象，那么计数器就需要32位。</li>
-<li><strong>最大的劣势是无法解决循环引用无法回收的问题</strong></li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function f()&#123;</span><br><span class="line">  var o = &#123;&#125;;</span><br><span class="line">  var o2 = &#123;&#125;;</span><br><span class="line">  o.a = o2; // o 引用 o2,o2的引用次数是1</span><br><span class="line">  o2.a = o; // o2 引用 o,o的引用此时是1</span><br><span class="line"></span><br><span class="line">  return &quot;azerty&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f();</span><br></pre></td></tr></table></figure>
-
-<p>fn在执行完成之后理应回收fn作用域里面的内存空间，但是因为<code>o</code>里面有一个属性引用<code>o2</code>,导致<code>o2</code>的引用次数始终为1，<code>o2</code>也是如此，而又非专门当做<code>闭包</code>来使用，所以这里就应该使<code>o</code>和<code>o2</code>被销毁。</p>
-<p>因为算法是将<code>引用次数为0</code>的对象销毁，此处都不为0，导致GC不会回收他们，那么这就是<code>内存泄漏</code>问题。</p>
-<p>2.标记清楚算法</p>
-<p><strong>主要将GC的垃圾回收过程分为两个阶段</strong></p>
-<ul>
-<li>标记阶段：把所有活动对象做上标记。</li>
-<li>清除阶段：把没有标记（也就是非活动对象）销毁</li>
-</ul>
-<p>这里引用一个图</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/1/26/16132f0da07d7c90?imageView2/0/w/1280/h/960/ignore-error/1" alt="img"></p>
-<p><strong>根</strong>可以理解成我们的全局作用域，GC从全局作用域的变量，沿作用域逐层往里遍历（对，是深度遍历），当遍历到堆中对象时，说明该对象被引用着，则打上一个标记，继续递归遍历（因为肯定存在堆中对象引用另一个堆中对象），直到遍历到最后一个（最深的一层作用域）节点。</p>
-<p>优势：</p>
-<ul>
-<li>实现简单，打标记也就是打或者不打两种可能，所以就一位二进制位就可以表示</li>
-<li>解决了循环引用问题</li>
-</ul>
-<p>缺点</p>
-<ul>
-<li>造成碎片化（有点类似磁盘的碎片化）</li>
-<li>再分配时遍次数多，如果一直没有找到合适的内存块大小，那么会遍历空闲链表(保存堆中所有空闲地址空间的地址形成的链表）一直遍历到尾端</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2020/03/01/简单了解垃圾回收机制/#more">more >></a>
+        
       
 
       
@@ -643,17 +321,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关于promise的应用题（一）</p>
-<p>promise的基础知识这里就不再阐述，下面给大家出一道题看一下</p>
-<p>红灯三秒亮一次，绿灯一秒亮一次，黄灯2秒亮一次；如何让三个灯不断交替重复亮灯？（用Promse实现）</p>
-<p>首先 应该写三个灯的函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">red</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'red'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">green</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'green'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">yellow</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'yellow'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后控制几秒亮一次，肯定是需要用定时器,用一个函数去控制</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">control</span>(<span class="params">fn,timer</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            fn()</span><br><span class="line">            resolve()</span><br><span class="line">        &#125;,timer)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//然后再去按我们的想法调用他们</span></span><br><span class="line"><span class="comment">//因为要一直闪  所以我们用递归一直去调用</span></span><br><span class="line"><span class="keyword">const</span> d = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve.reject</span>) =&gt;</span> &#123;</span><br><span class="line">	resolve()</span><br><span class="line">&#125;)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">step</span>(<span class="params">def</span>) </span>&#123;</span><br><span class="line">    def.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> control(red,<span class="number">3000</span>)</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> control(green,<span class="number">2000</span>)</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> control(yellow,<span class="number">1000</span>)</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        step(def)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">step(d)</span><br></pre></td></tr></table></figure>
-
-<p>大概就是这样咯  我觉得只要把意识培养好就好  一起加油 </p>
-
+        <h2 id="关于promise的应用题（一）"><a href="#关于promise的应用题（一）" class="headerlink" title="关于promise的应用题（一）"></a>关于promise的应用题（一）</h2><p>promise的基础知识这里就不再阐述，下面给大家出一道题看一下</p>
+        
+          <a class="article-more-a" href="/2020/03/01/关于promise的应用题（一）/#more">more >></a>
+        
       
 
       
@@ -700,17 +371,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这次来解决一个创建对象的问题</p>
-<p>在这样一个函数里，我们如何在已有的对象里，再根据我们想要的顺序和变量继续创建呢</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">namespace(&#123;a: &#123;test: 1, b: 2&#125;&#125;, &apos;a.b.c.d&apos;)</span><br></pre></td></tr></table></figure>
-
-<p>我们想要的结果是这样的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;a: &#123;test: 1, b: &#123;c: &#123;d: &#123;&#125;&#125;&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>下面我写一下代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function namespace(parentObj,package) &#123;</span><br><span class="line">	//首先我们肯定是一级一级往里加</span><br><span class="line">	let arr = package.split(&apos;.&apos;)</span><br><span class="line">	//先写一个截止条件</span><br><span class="line">	if(!arr[0].length) &#123;</span><br><span class="line">		return</span><br><span class="line">	&#125;else &#123;</span><br><span class="line">		//根据输出结果，如果这一级原来没有的话就是 &#123;&#125;</span><br><span class="line">		if(!parentObj[arr[0]])</span><br><span class="line">		namespace(parentObj[arr[0]],arr.slice(1).join(&apos;.&apos;)) //这里递归</span><br><span class="line">		return parentObj</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+        <h2 id="这次来解决一个创建对象的问题"><a href="#这次来解决一个创建对象的问题" class="headerlink" title="这次来解决一个创建对象的问题"></a>这次来解决一个创建对象的问题</h2><p>在这样一个函数里，我们如何在已有的对象里，再根据我们想要的顺序和变量继续创建呢</p>
+        
+          <a class="article-more-a" href="/2020/03/01/层级创建对象/#more">more >></a>
+        
       
 
       
@@ -759,32 +423,9 @@
       
         <h2 id="js的事件委托和事件代理"><a href="#js的事件委托和事件代理" class="headerlink" title="js的事件委托和事件代理"></a>js的事件委托和事件代理</h2><p>其实是比较基础的东西，但不一定可以理解到位，所以还是总结一下</p>
 <p>事件委托就是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件</p>
-<p>首先一个问题，我们为什么要用事件委托</p>
-<p>一般来说，dom需要有事件处理程序，我们都会直接给它设事件处理程序就好了，那如果是很多的dom需要添加事件处理呢？比如我们有100个li，每个li都有相同的click点击事件，可能我们会用for循环的方法，来遍历所有的li，然后给它们添加事件，那这么做会存在什么影响呢</p>
-<p>在JavaScript中，添加到页面上的事件处理程序数量将直接关系到页面的整体运行性能，因为需要不断的与dom节点进行交互，访问dom的次数越多，引起浏览器重绘与重排的次数也就越多，就会延长整个页面的交互就绪时间，这就是为什么性能优化的主要思想之一就是减少DOM操作的原因；如果要用事件委托，就会将所有的操作放到js程序里面，与dom的操作就只需要交互一次，这样就能大大的减少与dom的交互次数，提高性能；</p>
-<p>每个函数都是一个对象，是对象就会占用内存，对象越多，内存占用率就越大，自然性能就越差了比如上面的100个li，就要占用100个内存空间，如果是1000个，10000个呢，如果用事件委托，那么我们就可以只对它的父级，这一个对象进行操作，这样我们就需要一个内存空间就够了自然性能就会更好。</p>
-<p>接下来 说一下事件委托的原理</p>
-<p>事件委托是利用事件的冒泡原理来实现的，何为事件冒泡呢？就是事件从最深的节点开始，然后逐步向上传播事件</p>
-<p>有这样一个机制，那么我们给最外面的div加点击事件，那么里面的ul，li，a做点击事件的时候，都会冒泡到最外层的div上，所以都会触发，这就是事件委托，委托它们父级代为执行事件</p>
-<p>下面实现一下  </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;ul id=<span class="string">"ul1"</span>&gt;</span><br><span class="line">    &lt;li&gt;<span class="number">111</span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">    &lt;li&gt;222&lt;/</span>li&gt;</span><br><span class="line">    &lt;li&gt;<span class="number">333</span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">    &lt;li&gt;444&lt;/</span>li&gt;</span><br><span class="line">&lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">window.onload = function()&#123;</span></span><br><span class="line"><span class="regexp">　　var oUl = document.getElementById("ul1");</span></span><br><span class="line"><span class="regexp">　　oUl.onclick = function(ev)&#123;</span></span><br><span class="line"><span class="regexp">　　　　var ev = ev || window.event;</span></span><br><span class="line"><span class="regexp">　　　　var target = ev.target || ev.srcElement;</span></span><br><span class="line"><span class="regexp">　　　　if(target.nodeName.toLowerCase() == 'li')&#123;</span></span><br><span class="line"><span class="regexp">　 　　　　　　 alert(123);</span></span><br><span class="line"><span class="regexp">　　　　　　　  alert(target.innerHTML);</span></span><br><span class="line"><span class="regexp">　　　　&#125;</span></span><br><span class="line"><span class="regexp">　　&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>上面是单单点击li才alert</p>
-<p>那当我们想要新增节点也绑定事件呢</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">"btn"</span>);</span><br><span class="line">            <span class="keyword">var</span> oUl = <span class="built_in">document</span>.getElementById(<span class="string">"ul1"</span>);</span><br><span class="line">            <span class="keyword">var</span> aLi = oUl.getElementsByTagName(<span class="string">'li'</span>);</span><br><span class="line">            <span class="keyword">var</span> num = <span class="number">4</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//事件委托，添加的子元素也有事件</span></span><br><span class="line">            oUl.onmouseover = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">var</span> ev = ev || <span class="built_in">window</span>.event;</span><br><span class="line">                <span class="keyword">var</span> target = ev.target || ev.srcElement;</span><br><span class="line">                <span class="keyword">if</span>(target.nodeName.toLowerCase() == <span class="string">'li'</span>)&#123;</span><br><span class="line">                    target.style.background = <span class="string">"red"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;;</span><br><span class="line">            oUl.onmouseout = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">var</span> ev = ev || <span class="built_in">window</span>.event;</span><br><span class="line">                <span class="keyword">var</span> target = ev.target || ev.srcElement;</span><br><span class="line">                <span class="keyword">if</span>(target.nodeName.toLowerCase() == <span class="string">'li'</span>)&#123;</span><br><span class="line">                    target.style.background = <span class="string">"#fff"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//添加新节点</span></span><br><span class="line">            oBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                num++;</span><br><span class="line">                <span class="keyword">var</span> oLi = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);</span><br><span class="line">                oLi.innerHTML = <span class="number">111</span>*num;</span><br><span class="line">                oUl.appendChild(oLi);</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>假如有不同的选择呢</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;box&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;button&quot; id=&quot;add&quot; value=&quot;添加&quot; /&gt;</span><br><span class="line">        &lt;input type=&quot;button&quot; id=&quot;remove&quot; value=&quot;删除&quot; /&gt;</span><br><span class="line">        &lt;input type=&quot;button&quot; id=&quot;move&quot; value=&quot;移动&quot; /&gt;</span><br><span class="line">        &lt;input type=&quot;button&quot; id=&quot;select&quot; value=&quot;选择&quot; /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> oBox = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</span><br><span class="line">            oBox.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">ev</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> ev = ev || <span class="built_in">window</span>.event;</span><br><span class="line">                <span class="keyword">var</span> target = ev.target || ev.srcElement;</span><br><span class="line">                <span class="keyword">if</span>(target.nodeName.toLocaleLowerCase() == <span class="string">'input'</span>)&#123;</span><br><span class="line">                    <span class="keyword">switch</span>(target.id)&#123;</span><br><span class="line">                        <span class="keyword">case</span> <span class="string">'add'</span> :</span><br><span class="line">                            alert(<span class="string">'添加'</span>);</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        <span class="keyword">case</span> <span class="string">'remove'</span> :</span><br><span class="line">                            alert(<span class="string">'删除'</span>);</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        <span class="keyword">case</span> <span class="string">'move'</span> :</span><br><span class="line">                            alert(<span class="string">'移动'</span>);</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        <span class="keyword">case</span> <span class="string">'select'</span> :</span><br><span class="line">                            alert(<span class="string">'选择'</span>);</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>那如果有这样的需求呢  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=&quot;test&quot;&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;p&gt;11111111111&lt;/p&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                22222222</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;span&gt;3333333333&lt;/span&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li&gt;4444444&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如上列表，有4个li，里面的内容各不相同，点击li，event对象肯定是当前点击的对象，怎么指定到li上</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oUl = <span class="built_in">document</span>.getElementById(<span class="string">'test'</span>);</span><br><span class="line">    oUl.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> target = ev.target;</span><br><span class="line">        <span class="keyword">while</span>(target !== oUl )&#123;</span><br><span class="line">            <span class="keyword">if</span>(target.tagName.toLowerCase() == <span class="string">'li'</span>)&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'li click~'</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            target = target.parentNode;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-
-
+        
+          <a class="article-more-a" href="/2020/03/01/js的事件委托和事件代理/#more">more >></a>
+        
       
 
       
@@ -831,27 +472,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>浏览器eventloop</p>
-<p>大家都知道eventloop是js里很重要的概念，相关的文章很多，但我觉得有必要自己再总结一下，尽量用自己的话让大家明白这个概念</p>
-<p> js是单线程语言，大部分任务都是在主线程上执行的比如</p>
-<ol>
-<li>渲染事件</li>
-<li>用户交互事件</li>
-<li>js脚本执行</li>
-<li>网络请求、文件读写完成事件等等。</li>
-</ol>
-<p>为了能够顺序执行，使用了事件队列的形式，类似于一个调用栈存储待执行的事件，当我们遇见事件的时候就放到这个执行栈里，当碰到异步事件的时候的时候，就分为他是宏任务还是微任务，放到不同的队列里</p>
-<p>首先js引擎在一次事件循环中，会先执行js线程的主任务，然后会去查找是否有微任务<code>microtask（promise）</code>，如果有那就优先执行微任务，如果没有，在去查找宏任务<code>macrotask（setTimeout、setInterval）</code>进行执行</p>
-<p>总之 </p>
-<p><strong>正确的一次 Event loop 顺序是这样的</strong></p>
-<ul>
-<li>执行同步代码，这属于宏任务</li>
-<li>执行栈为空，查询是否有微任务需要执行</li>
-<li>执行所有微任务</li>
-<li>必要的话渲染 <code>UI</code></li>
-<li>然后开始下一轮 <code>Event loop</code>，执行宏任务中的异步代码</li>
-</ul>
-
+        <h2 id="浏览器eventloop"><a href="#浏览器eventloop" class="headerlink" title="浏览器eventloop"></a>浏览器eventloop</h2><p>大家都知道eventloop是js里很重要的概念，相关的文章很多，但我觉得有必要自己再总结一下，尽量用自己的话让大家明白这个概念</p>
+        
+          <a class="article-more-a" href="/2020/03/01/eventloop/#more">more >></a>
+        
       
 
       
@@ -898,17 +522,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>js的dom方法  contains</p>
-<p>今天来接触一个js方法，contains</p>
+        <h2 id="js的dom方法-contains"><a href="#js的dom方法-contains" class="headerlink" title="js的dom方法  contains"></a>js的dom方法  contains</h2><p>今天来接触一个js方法，contains</p>
 <p>这个方法之前用过的比较少，但在某些时候却很有用</p>
 <p>它的作用就是判断dom的包含关系</p>
 <p>假设有这样的需求</p>
-<p><strong>查找两个节点的最近的一个共同父节点，可以包括节点自身</strong></p>
-<p>是不是感觉一下无可下手？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function commonParentNode(oNode1, oNode2) &#123;</span><br><span class="line">    if(oNode1.contains(oNode2))&#123;</span><br><span class="line">        return oNode1;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return commonParentNode(oNode1.parentNode,oNode2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其实代码很简单，只需要想到递归就可以</p>
-
+        
+          <a class="article-more-a" href="/2020/03/01/contains/#more">more >></a>
+        
       
 
       
@@ -955,8 +575,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>获取url里的参数是比较常用的操作，这里给增加一些难度，分情况</p>
-<ol>
+        <h2 id="获取url里的参数是比较常用的操作，这里给增加一些难度，分情况"><a href="#获取url里的参数是比较常用的操作，这里给增加一些难度，分情况" class="headerlink" title="获取url里的参数是比较常用的操作，这里给增加一些难度，分情况"></a>获取url里的参数是比较常用的操作，这里给增加一些难度，分情况</h2><ol>
 <li>如果指定参数名称，返回该参数的值 或者 空字符串</li>
 <li>不指定参数名称，返回全部的参数对象 或者 {}</li>
 <li>如果存在多个同名参数，则返回数组

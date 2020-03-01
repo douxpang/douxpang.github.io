@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://www.douxpang.com">
   <title>devonpang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于promise的应用题（一） promise的基础知识这里就不再阐述，下面给大家出一道题看一下 红灯三秒亮一次，绿灯一秒亮一次，黄灯2秒亮一次；如何让三个灯不断交替重复亮灯？（用Promse实现） 首先 应该写三个灯的函数 123456789function red() &amp;#123;	console.log(&apos;red&apos;)&amp;#125;function green() &amp;#123;    cons">
+  <meta name="description" content="关于promise的应用题（一）promise的基础知识这里就不再阐述，下面给大家出一道题看一下">
 <meta name="keywords" content="js,css,html,vue,react,nodejs,算法,生活">
 <meta property="og:type" content="article">
 <meta property="og:title" content="devonpang的博客">
 <meta property="og:url" content="https://www.douxpang.com/2020/03/01/关于promise的应用题（一）/index.html">
 <meta property="og:site_name" content="devonpang的博客">
-<meta property="og:description" content="关于promise的应用题（一） promise的基础知识这里就不再阐述，下面给大家出一道题看一下 红灯三秒亮一次，绿灯一秒亮一次，黄灯2秒亮一次；如何让三个灯不断交替重复亮灯？（用Promse实现） 首先 应该写三个灯的函数 123456789function red() &amp;#123;	console.log(&apos;red&apos;)&amp;#125;function green() &amp;#123;    cons">
+<meta property="og:description" content="关于promise的应用题（一）promise的基础知识这里就不再阐述，下面给大家出一道题看一下">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-01T09:31:04.011Z">
+<meta property="og:updated_time" content="2020-03-01T11:04:18.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="devonpang的博客">
-<meta name="twitter:description" content="关于promise的应用题（一） promise的基础知识这里就不再阐述，下面给大家出一道题看一下 红灯三秒亮一次，绿灯一秒亮一次，黄灯2秒亮一次；如何让三个灯不断交替重复亮灯？（用Promse实现） 首先 应该写三个灯的函数 123456789function red() &amp;#123;	console.log(&apos;red&apos;)&amp;#125;function green() &amp;#123;    cons">
+<meta name="twitter:description" content="关于promise的应用题（一）promise的基础知识这里就不再阐述，下面给大家出一道题看一下">
   
     <link rel="alternative" href="/atom.xml" title="devonpang的博客" type="application/atom+xml">
   
@@ -164,8 +164,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关于promise的应用题（一）</p>
-<p>promise的基础知识这里就不再阐述，下面给大家出一道题看一下</p>
+        <h2 id="关于promise的应用题（一）"><a href="#关于promise的应用题（一）" class="headerlink" title="关于promise的应用题（一）"></a>关于promise的应用题（一）</h2><p>promise的基础知识这里就不再阐述，下面给大家出一道题看一下</p>
+<a id="more"></a>
+
 <p>红灯三秒亮一次，绿灯一秒亮一次，黄灯2秒亮一次；如何让三个灯不断交替重复亮灯？（用Promse实现）</p>
 <p>首先 应该写三个灯的函数</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">red</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'red'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">green</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'green'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">yellow</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'yellow'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://www.douxpang.com">
   <title>devonpang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="浏览器eventloop 大家都知道eventloop是js里很重要的概念，相关的文章很多，但我觉得有必要自己再总结一下，尽量用自己的话让大家明白这个概念  js是单线程语言，大部分任务都是在主线程上执行的比如  渲染事件 用户交互事件 js脚本执行 网络请求、文件读写完成事件等等。  为了能够顺序执行，使用了事件队列的形式，类似于一个调用栈存储待执行的事件，当我们遇见事件的时候就放到这个执行栈里">
+  <meta name="description" content="浏览器eventloop大家都知道eventloop是js里很重要的概念，相关的文章很多，但我觉得有必要自己再总结一下，尽量用自己的话让大家明白这个概念">
 <meta name="keywords" content="js,css,html,vue,react,nodejs,算法,生活">
 <meta property="og:type" content="article">
 <meta property="og:title" content="devonpang的博客">
 <meta property="og:url" content="https://www.douxpang.com/2020/03/01/eventloop/index.html">
 <meta property="og:site_name" content="devonpang的博客">
-<meta property="og:description" content="浏览器eventloop 大家都知道eventloop是js里很重要的概念，相关的文章很多，但我觉得有必要自己再总结一下，尽量用自己的话让大家明白这个概念  js是单线程语言，大部分任务都是在主线程上执行的比如  渲染事件 用户交互事件 js脚本执行 网络请求、文件读写完成事件等等。  为了能够顺序执行，使用了事件队列的形式，类似于一个调用栈存储待执行的事件，当我们遇见事件的时候就放到这个执行栈里">
+<meta property="og:description" content="浏览器eventloop大家都知道eventloop是js里很重要的概念，相关的文章很多，但我觉得有必要自己再总结一下，尽量用自己的话让大家明白这个概念">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-01T09:30:45.412Z">
+<meta property="og:updated_time" content="2020-03-01T11:03:06.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="devonpang的博客">
-<meta name="twitter:description" content="浏览器eventloop 大家都知道eventloop是js里很重要的概念，相关的文章很多，但我觉得有必要自己再总结一下，尽量用自己的话让大家明白这个概念  js是单线程语言，大部分任务都是在主线程上执行的比如  渲染事件 用户交互事件 js脚本执行 网络请求、文件读写完成事件等等。  为了能够顺序执行，使用了事件队列的形式，类似于一个调用栈存储待执行的事件，当我们遇见事件的时候就放到这个执行栈里">
+<meta name="twitter:description" content="浏览器eventloop大家都知道eventloop是js里很重要的概念，相关的文章很多，但我觉得有必要自己再总结一下，尽量用自己的话让大家明白这个概念">
   
     <link rel="alternative" href="/atom.xml" title="devonpang的博客" type="application/atom+xml">
   
@@ -164,8 +164,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>浏览器eventloop</p>
-<p>大家都知道eventloop是js里很重要的概念，相关的文章很多，但我觉得有必要自己再总结一下，尽量用自己的话让大家明白这个概念</p>
+        <h2 id="浏览器eventloop"><a href="#浏览器eventloop" class="headerlink" title="浏览器eventloop"></a>浏览器eventloop</h2><p>大家都知道eventloop是js里很重要的概念，相关的文章很多，但我觉得有必要自己再总结一下，尽量用自己的话让大家明白这个概念</p>
+<a id="more"></a>
+
 <p> js是单线程语言，大部分任务都是在主线程上执行的比如</p>
 <ol>
 <li>渲染事件</li>

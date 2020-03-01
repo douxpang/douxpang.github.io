@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://www.douxpang.com">
   <title>devonpang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简单了解垃圾回收机制垃圾回收机制 就是我们常说的GC 而为什么需要这么一个垃圾回收机制呢 在我们工作中，总会产生一些这样的‘垃圾’即 程序不用的内存空间（可能是在之前用过了，以后不会再用的) 而我们的GC它的作用就是  找到内存空间中的垃圾。 回收垃圾，让程序员能再次利用这部分空间。  简单说两种垃圾回收的算法 1.引用计数法 顾名思义，让所有对象实现记录下有多少“程序”在引用自己，让各对象都知道">
+  <meta name="description" content="简单了解垃圾回收机制垃圾回收机制 就是我们常说的GC 而为什么需要这么一个垃圾回收机制呢 在我们工作中，总会产生一些这样的‘垃圾’即 程序不用的内存空间（可能是在之前用过了，以后不会再用的)">
 <meta name="keywords" content="js,css,html,vue,react,nodejs,算法,生活">
 <meta property="og:type" content="article">
 <meta property="og:title" content="devonpang的博客">
 <meta property="og:url" content="https://www.douxpang.com/2020/03/01/简单了解垃圾回收机制/index.html">
 <meta property="og:site_name" content="devonpang的博客">
-<meta property="og:description" content="简单了解垃圾回收机制垃圾回收机制 就是我们常说的GC 而为什么需要这么一个垃圾回收机制呢 在我们工作中，总会产生一些这样的‘垃圾’即 程序不用的内存空间（可能是在之前用过了，以后不会再用的) 而我们的GC它的作用就是  找到内存空间中的垃圾。 回收垃圾，让程序员能再次利用这部分空间。  简单说两种垃圾回收的算法 1.引用计数法 顾名思义，让所有对象实现记录下有多少“程序”在引用自己，让各对象都知道">
+<meta property="og:description" content="简单了解垃圾回收机制垃圾回收机制 就是我们常说的GC 而为什么需要这么一个垃圾回收机制呢 在我们工作中，总会产生一些这样的‘垃圾’即 程序不用的内存空间（可能是在之前用过了，以后不会再用的)">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/1/26/16132f0da07d7c90?imageView2/0/w/1280/h/960/ignore-error/1">
-<meta property="og:updated_time" content="2020-03-01T09:31:10.817Z">
+<meta property="og:updated_time" content="2020-03-01T11:04:28.999Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="devonpang的博客">
-<meta name="twitter:description" content="简单了解垃圾回收机制垃圾回收机制 就是我们常说的GC 而为什么需要这么一个垃圾回收机制呢 在我们工作中，总会产生一些这样的‘垃圾’即 程序不用的内存空间（可能是在之前用过了，以后不会再用的) 而我们的GC它的作用就是  找到内存空间中的垃圾。 回收垃圾，让程序员能再次利用这部分空间。  简单说两种垃圾回收的算法 1.引用计数法 顾名思义，让所有对象实现记录下有多少“程序”在引用自己，让各对象都知道">
+<meta name="twitter:description" content="简单了解垃圾回收机制垃圾回收机制 就是我们常说的GC 而为什么需要这么一个垃圾回收机制呢 在我们工作中，总会产生一些这样的‘垃圾’即 程序不用的内存空间（可能是在之前用过了，以后不会再用的)">
 <meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/1/26/16132f0da07d7c90?imageView2/0/w/1280/h/960/ignore-error/1">
   
     <link rel="alternative" href="/atom.xml" title="devonpang的博客" type="application/atom+xml">
@@ -170,6 +170,8 @@
 <p>而为什么需要这么一个垃圾回收机制呢</p>
 <p>在我们工作中，总会产生一些这样的‘垃圾’即</p>
 <p><strong>程序不用的内存空间（可能是在之前用过了，以后不会再用的)</strong></p>
+<a id="more"></a>
+
 <p>而我们的GC它的作用就是</p>
 <ul>
 <li>找到内存空间中的垃圾。</li>

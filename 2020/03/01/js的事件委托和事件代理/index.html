@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://www.douxpang.com">
   <title>devonpang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="js的事件委托和事件代理其实是比较基础的东西，但不一定可以理解到位，所以还是总结一下 事件委托就是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件 首先一个问题，我们为什么要用事件委托 一般来说，dom需要有事件处理程序，我们都会直接给它设事件处理程序就好了，那如果是很多的dom需要添加事件处理呢？比如我们有100个li，每个li都有相同的click点击事件，可能我们会用for循">
+  <meta name="description" content="js的事件委托和事件代理其实是比较基础的东西，但不一定可以理解到位，所以还是总结一下 事件委托就是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件">
 <meta name="keywords" content="js,css,html,vue,react,nodejs,算法,生活">
 <meta property="og:type" content="article">
 <meta property="og:title" content="devonpang的博客">
 <meta property="og:url" content="https://www.douxpang.com/2020/03/01/js的事件委托和事件代理/index.html">
 <meta property="og:site_name" content="devonpang的博客">
-<meta property="og:description" content="js的事件委托和事件代理其实是比较基础的东西，但不一定可以理解到位，所以还是总结一下 事件委托就是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件 首先一个问题，我们为什么要用事件委托 一般来说，dom需要有事件处理程序，我们都会直接给它设事件处理程序就好了，那如果是很多的dom需要添加事件处理呢？比如我们有100个li，每个li都有相同的click点击事件，可能我们会用for循">
+<meta property="og:description" content="js的事件委托和事件代理其实是比较基础的东西，但不一定可以理解到位，所以还是总结一下 事件委托就是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-01T09:30:51.952Z">
+<meta property="og:updated_time" content="2020-03-01T11:06:55.803Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="devonpang的博客">
-<meta name="twitter:description" content="js的事件委托和事件代理其实是比较基础的东西，但不一定可以理解到位，所以还是总结一下 事件委托就是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件 首先一个问题，我们为什么要用事件委托 一般来说，dom需要有事件处理程序，我们都会直接给它设事件处理程序就好了，那如果是很多的dom需要添加事件处理呢？比如我们有100个li，每个li都有相同的click点击事件，可能我们会用for循">
+<meta name="twitter:description" content="js的事件委托和事件代理其实是比较基础的东西，但不一定可以理解到位，所以还是总结一下 事件委托就是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件">
   
     <link rel="alternative" href="/atom.xml" title="devonpang的博客" type="application/atom+xml">
   
@@ -166,6 +166,8 @@
       
         <h2 id="js的事件委托和事件代理"><a href="#js的事件委托和事件代理" class="headerlink" title="js的事件委托和事件代理"></a>js的事件委托和事件代理</h2><p>其实是比较基础的东西，但不一定可以理解到位，所以还是总结一下</p>
 <p>事件委托就是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件</p>
+<a id="more"></a>
+
 <p>首先一个问题，我们为什么要用事件委托</p>
 <p>一般来说，dom需要有事件处理程序，我们都会直接给它设事件处理程序就好了，那如果是很多的dom需要添加事件处理呢？比如我们有100个li，每个li都有相同的click点击事件，可能我们会用for循环的方法，来遍历所有的li，然后给它们添加事件，那这么做会存在什么影响呢</p>
 <p>在JavaScript中，添加到页面上的事件处理程序数量将直接关系到页面的整体运行性能，因为需要不断的与dom节点进行交互，访问dom的次数越多，引起浏览器重绘与重排的次数也就越多，就会延长整个页面的交互就绪时间，这就是为什么性能优化的主要思想之一就是减少DOM操作的原因；如果要用事件委托，就会将所有的操作放到js程序里面，与dom的操作就只需要交互一次，这样就能大大的减少与dom的交互次数，提高性能；</p>
