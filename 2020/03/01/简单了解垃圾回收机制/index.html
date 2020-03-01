@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.douxpang.com">
-  <title>Archives: 2020 | devonpang的博客</title>
+  <title>devonpang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="17级双非，非科班，好小说诗文，好争论交友，技术很菜，人又笨，只能日夜学习才能与君同行，主前端，目标全栈">
+  <meta name="description" content="简单了解垃圾回收机制垃圾回收机制 就是我们常说的GC 而为什么需要这么一个垃圾回收机制呢 在我们工作中，总会产生一些这样的‘垃圾’即 程序不用的内存空间（可能是在之前用过了，以后不会再用的) 而我们的GC它的作用就是  找到内存空间中的垃圾。 回收垃圾，让程序员能再次利用这部分空间。  简单说两种垃圾回收的算法 1.引用计数法 顾名思义，让所有对象实现记录下有多少“程序”在引用自己，让各对象都知道">
 <meta name="keywords" content="js,css,html,vue,react,nodejs,算法,生活">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="devonpang的博客">
-<meta property="og:url" content="https://www.douxpang.com/archives/2020/index.html">
+<meta property="og:url" content="https://www.douxpang.com/2020/03/01/简单了解垃圾回收机制/index.html">
 <meta property="og:site_name" content="devonpang的博客">
-<meta property="og:description" content="17级双非，非科班，好小说诗文，好争论交友，技术很菜，人又笨，只能日夜学习才能与君同行，主前端，目标全栈">
+<meta property="og:description" content="简单了解垃圾回收机制垃圾回收机制 就是我们常说的GC 而为什么需要这么一个垃圾回收机制呢 在我们工作中，总会产生一些这样的‘垃圾’即 程序不用的内存空间（可能是在之前用过了，以后不会再用的) 而我们的GC它的作用就是  找到内存空间中的垃圾。 回收垃圾，让程序员能再次利用这部分空间。  简单说两种垃圾回收的算法 1.引用计数法 顾名思义，让所有对象实现记录下有多少“程序”在引用自己，让各对象都知道">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/1/26/16132f0da07d7c90?imageView2/0/w/1280/h/960/ignore-error/1">
+<meta property="og:updated_time" content="2020-03-01T09:31:10.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="devonpang的博客">
-<meta name="twitter:description" content="17级双非，非科班，好小说诗文，好争论交友，技术很菜，人又笨，只能日夜学习才能与君同行，主前端，目标全栈">
+<meta name="twitter:description" content="简单了解垃圾回收机制垃圾回收机制 就是我们常说的GC 而为什么需要这么一个垃圾回收机制呢 在我们工作中，总会产生一些这样的‘垃圾’即 程序不用的内存空间（可能是在之前用过了，以后不会再用的) 而我们的GC它的作用就是  找到内存空间中的垃圾。 回收垃圾，让程序员能再次利用这部分空间。  简单说两种垃圾回收的算法 1.引用计数法 顾名思义，让所有对象实现记录下有多少“程序”在引用自己，让各对象都知道">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/1/26/16132f0da07d7c90?imageView2/0/w/1280/h/960/ignore-error/1">
   
     <link rel="alternative" href="/atom.xml" title="devonpang的博客" type="application/atom+xml">
   
@@ -158,232 +161,197 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-简单了解垃圾回收机制" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简单了解垃圾回收机制"><a href="#简单了解垃圾回收机制" class="headerlink" title="简单了解垃圾回收机制"></a>简单了解垃圾回收机制</h2><p>垃圾回收机制 就是我们常说的GC</p>
+<p>而为什么需要这么一个垃圾回收机制呢</p>
+<p>在我们工作中，总会产生一些这样的‘垃圾’即</p>
+<p><strong>程序不用的内存空间（可能是在之前用过了，以后不会再用的)</strong></p>
+<p>而我们的GC它的作用就是</p>
+<ul>
+<li>找到内存空间中的垃圾。</li>
+<li>回收垃圾，让程序员能再次利用这部分空间。</li>
+</ul>
+<p>简单说两种垃圾回收的算法</p>
+<p>1.引用计数法</p>
+<p>顾名思义，让所有对象实现记录下有多少“程序”在引用自己，让各对象都知道自己的“人气指数”。举一个简单的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a = new Object(); // 此时&apos;这个对象&apos;的引用计数为1（a在引用）</span><br><span class="line">var b = a; // ‘这个对象’的引用计数是2（a,b）</span><br><span class="line">a = null; // reference_count = 1</span><br><span class="line">b = null; // reference_count = 0 </span><br><span class="line">// 下一步 GC来回收‘这个对象’了</span><br></pre></td></tr></table></figure>
+
+<p><strong>优势</strong></p>
+<ol>
+<li><strong>可即刻回收垃圾</strong>，当被引用数值为0时，对象马上会把自己作为空闲空间连到空闲链表上，也就是说。在变成垃圾的时候就立刻被回收。</li>
+<li><strong>因为是即时回收,那么‘程序’不会暂停去单独使用很长一段时间的GC，那么最大暂停时间很短。</strong></li>
+<li><strong>不用去遍历堆里面的所有活动对象和非活动对象</strong></li>
+</ol>
+<p><strong>劣势</strong></p>
+<ol>
+<li><strong>计数器需要占很大的位置</strong>，因为不能预估被引用的上限，打个比方，可能出现32位即2的32次方个对象同时引用一个对象，那么计数器就需要32位。</li>
+<li><strong>最大的劣势是无法解决循环引用无法回收的问题</strong></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function f()&#123;</span><br><span class="line">  var o = &#123;&#125;;</span><br><span class="line">  var o2 = &#123;&#125;;</span><br><span class="line">  o.a = o2; // o 引用 o2,o2的引用次数是1</span><br><span class="line">  o2.a = o; // o2 引用 o,o的引用此时是1</span><br><span class="line"></span><br><span class="line">  return &quot;azerty&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f();</span><br></pre></td></tr></table></figure>
+
+<p>fn在执行完成之后理应回收fn作用域里面的内存空间，但是因为<code>o</code>里面有一个属性引用<code>o2</code>,导致<code>o2</code>的引用次数始终为1，<code>o2</code>也是如此，而又非专门当做<code>闭包</code>来使用，所以这里就应该使<code>o</code>和<code>o2</code>被销毁。</p>
+<p>因为算法是将<code>引用次数为0</code>的对象销毁，此处都不为0，导致GC不会回收他们，那么这就是<code>内存泄漏</code>问题。</p>
+<p>2.标记清楚算法</p>
+<p><strong>主要将GC的垃圾回收过程分为两个阶段</strong></p>
+<ul>
+<li>标记阶段：把所有活动对象做上标记。</li>
+<li>清除阶段：把没有标记（也就是非活动对象）销毁</li>
+</ul>
+<p>这里引用一个图</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/1/26/16132f0da07d7c90?imageView2/0/w/1280/h/960/ignore-error/1" alt="img"></p>
+<p><strong>根</strong>可以理解成我们的全局作用域，GC从全局作用域的变量，沿作用域逐层往里遍历（对，是深度遍历），当遍历到堆中对象时，说明该对象被引用着，则打上一个标记，继续递归遍历（因为肯定存在堆中对象引用另一个堆中对象），直到遍历到最后一个（最深的一层作用域）节点。</p>
+<p>优势：</p>
+<ul>
+<li>实现简单，打标记也就是打或者不打两种可能，所以就一位二进制位就可以表示</li>
+<li>解决了循环引用问题</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>造成碎片化（有点类似磁盘的碎片化）</li>
+<li>再分配时遍次数多，如果一直没有找到合适的内存块大小，那么会遍历空闲链表(保存堆中所有空闲地址空间的地址形成的链表）一直遍历到尾端</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/正则匹配的一些回顾和练习/" class="archive-article-date">
-  	<time datetime="2020-03-01T09:31:19.618Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.douxpang.com/2020/03/01/简单了解垃圾回收机制/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/时间的格式化/" class="archive-article-date">
-  	<time datetime="2020-03-01T09:31:14.889Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/简单了解垃圾回收机制/" class="archive-article-date">
-  	<time datetime="2020-03-01T09:31:10.751Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2020/03/01/时间的格式化/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/01/关于promise的应用题（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/关于promise的应用题（一）/" class="archive-article-date">
-  	<time datetime="2020-03-01T09:31:03.976Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/层级创建对象/" class="archive-article-date">
-  	<time datetime="2020-03-01T09:30:57.815Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/js的事件委托和事件代理/" class="archive-article-date">
-  	<time datetime="2020-03-01T09:30:51.913Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/eventloop/" class="archive-article-date">
-  	<time datetime="2020-03-01T09:30:45.376Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/contains/" class="archive-article-date">
-  	<time datetime="2020-03-01T09:28:12.001Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/14/分情况获取url/" class="archive-article-date">
-  	<time datetime="2020-02-14T08:55:52.229Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-14</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/14/菜鸟扫盲之调试代理工具——whistle/" class="archive-article-date">
-  	<time datetime="2020-02-14T06:10:12.056Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-14</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -406,8 +374,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

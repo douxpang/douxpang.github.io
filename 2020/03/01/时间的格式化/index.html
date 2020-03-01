@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.douxpang.com">
-  <title>Archives: 2020 | devonpang的博客</title>
+  <title>devonpang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="17级双非，非科班，好小说诗文，好争论交友，技术很菜，人又笨，只能日夜学习才能与君同行，主前端，目标全栈">
+  <meta name="description" content="最近觉得对时间对象的掌握有些稀疏，这里再复习一下 123456789101112131415161718192021222324252627282930313233function formatDate(oDate, sFormation) &amp;#123;    var add0 = function(num)&amp;#123;        if(num&amp;lt;10)            return">
 <meta name="keywords" content="js,css,html,vue,react,nodejs,算法,生活">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="devonpang的博客">
-<meta property="og:url" content="https://www.douxpang.com/archives/2020/index.html">
+<meta property="og:url" content="https://www.douxpang.com/2020/03/01/时间的格式化/index.html">
 <meta property="og:site_name" content="devonpang的博客">
-<meta property="og:description" content="17级双非，非科班，好小说诗文，好争论交友，技术很菜，人又笨，只能日夜学习才能与君同行，主前端，目标全栈">
+<meta property="og:description" content="最近觉得对时间对象的掌握有些稀疏，这里再复习一下 123456789101112131415161718192021222324252627282930313233function formatDate(oDate, sFormation) &amp;#123;    var add0 = function(num)&amp;#123;        if(num&amp;lt;10)            return">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-01T09:31:14.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="devonpang的博客">
-<meta name="twitter:description" content="17级双非，非科班，好小说诗文，好争论交友，技术很菜，人又笨，只能日夜学习才能与君同行，主前端，目标全栈">
+<meta name="twitter:description" content="最近觉得对时间对象的掌握有些稀疏，这里再复习一下 123456789101112131415161718192021222324252627282930313233function formatDate(oDate, sFormation) &amp;#123;    var add0 = function(num)&amp;#123;        if(num&amp;lt;10)            return">
   
     <link rel="alternative" href="/atom.xml" title="devonpang的博客" type="application/atom+xml">
   
@@ -158,232 +159,152 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-时间的格式化" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近觉得对时间对象的掌握有些稀疏，这里再复习一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">function formatDate(oDate, sFormation) &#123;</span><br><span class="line">    var add0 = function(num)&#123;</span><br><span class="line">        if(num&lt;10)</span><br><span class="line">            return 0+&quot;&quot;+num;</span><br><span class="line">        else</span><br><span class="line">            return num;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    var o = &#123;</span><br><span class="line">        &quot;yyyy&quot;:oDate.getFullYear(),</span><br><span class="line">        &quot;yy&quot;:oDate.getFullYear()%100,</span><br><span class="line">        &quot;MM&quot;:add0(oDate.getMonth()+1),</span><br><span class="line">        &quot;M&quot;:oDate.getMonth()+1,</span><br><span class="line">        &quot;dd&quot;:add0(oDate.getDate()),</span><br><span class="line">        &quot;d&quot;:oDate.getDate(),</span><br><span class="line">        &quot;HH&quot;:add0(oDate.getHours()),</span><br><span class="line">        &quot;H&quot;:oDate.getHours(),</span><br><span class="line">        &quot;hh&quot;:add0(oDate.getHours()%12),</span><br><span class="line">        &quot;h&quot;:oDate.getHours()%12,</span><br><span class="line">        &quot;mm&quot;:add0(oDate.getMinutes()),</span><br><span class="line">        &quot;m&quot;:oDate.getMinutes(),</span><br><span class="line">        &quot;ss&quot;:add0(oDate.getSeconds()),</span><br><span class="line">        &quot;s&quot;:oDate.getSeconds(),</span><br><span class="line">        &quot;w&quot;:function()&#123;</span><br><span class="line">            var day = [&quot;日&quot;,&quot;一&quot;,&quot;二&quot;,&quot;三&quot;,&quot;四&quot;,&quot;五&quot;,&quot;六&quot;];</span><br><span class="line">            return day[oDate.getDay()];</span><br><span class="line">        &#125;(),</span><br><span class="line">    &#125;</span><br><span class="line">    for(var k in o)&#123;</span><br><span class="line">        sFormation = sFormation.replace(k,o[k]);</span><br><span class="line">    &#125;</span><br><span class="line">    return sFormation;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/正则匹配的一些回顾和练习/" class="archive-article-date">
-  	<time datetime="2020-03-01T09:31:19.618Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.douxpang.com/2020/03/01/时间的格式化/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/时间的格式化/" class="archive-article-date">
-  	<time datetime="2020-03-01T09:31:14.889Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/简单了解垃圾回收机制/" class="archive-article-date">
-  	<time datetime="2020-03-01T09:31:10.751Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2020/03/01/正则匹配的一些回顾和练习/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/01/简单了解垃圾回收机制/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/关于promise的应用题（一）/" class="archive-article-date">
-  	<time datetime="2020-03-01T09:31:03.976Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/层级创建对象/" class="archive-article-date">
-  	<time datetime="2020-03-01T09:30:57.815Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/js的事件委托和事件代理/" class="archive-article-date">
-  	<time datetime="2020-03-01T09:30:51.913Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/eventloop/" class="archive-article-date">
-  	<time datetime="2020-03-01T09:30:45.376Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/01/contains/" class="archive-article-date">
-  	<time datetime="2020-03-01T09:28:12.001Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/14/分情况获取url/" class="archive-article-date">
-  	<time datetime="2020-02-14T08:55:52.229Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-14</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/14/菜鸟扫盲之调试代理工具——whistle/" class="archive-article-date">
-  	<time datetime="2020-02-14T06:10:12.056Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-14</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -406,8 +327,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
